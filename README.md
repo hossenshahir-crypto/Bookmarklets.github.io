@@ -4,80 +4,47 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Drag Bookmarklets to Your Bar</title>
+<title>Drag These Bookmarklets</title>
 <style>
-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  background: #f9fafb;
-  color: #111;
-  margin: 40px auto;
-  padding: 28px;
-  max-width: 900px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(16,24,40,.08);
-}
-h1 { font-size: 1.6rem; }
-.card {
-  background: white;
-  padding: 16px;
-  border-radius: 10px;
-  border: 1px solid #e6e9ee;
-  margin: 12px 0;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.link {
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:8px;
-  background:#0b5cff;
-  color:white;
-  text-decoration:none;
-  font-weight:600;
-  box-shadow:0 6px 18px rgba(11,92,255,.12);
-}
-.link:hover { background:#0947d1; }
-.instructions { font-size:0.95rem; color:#475569; }
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f9fafb;color:#111;margin:40px auto;padding:28px;max-width:900px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,.08)}
+h1{font-size:1.6rem}
+.card{background:white;padding:16px;border-radius:10px;border:1px solid #e6e9ee;margin:12px 0;display:flex;align-items:center;gap:16px}
+.link{display:inline-block;padding:10px 14px;border-radius:8px;background:#0b5cff;color:white;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(11,92,255,.12)}
+.link:hover{background:#0947d1}
+.instructions{font-size:.95rem;color:#475569}
 </style>
 </head>
 <body>
-
 <h1>Drag these to your bookmarks bar</h1>
-<p>Drag the blue buttons below to your bookmarks bar. Then click them on any page to use them!</p>
+<p>Drag any blue button to your bookmarks bar (or right-click → “Bookmark this link”).</p>
 
-<!-- Edit Page Text -->
+<!-- 1. Edit Page -->
 <div class="card">
-  <div style="flex:1">
-    <strong>Edit the text of any page</strong>
-    <div class="instructions">
-      Turns on editable mode. Click anywhere to edit text; reload to reset.
-    </div>
-  </div>
-  <a class="link"
-     href="javascript:(function(){var d=document;if(d.designMode==='on'){d.designMode='off';d.body.contentEditable='false';alert('Editing disabled');}else{d.designMode='on';d.body.contentEditable='true';alert('Editing enabled! Click text to edit. Reload to undo.');}})();">
-     🔖 Drag: Edit text
-  </a>
+<div style="flex:1"><strong>Edit the text of any page</strong><div class="instructions">Toggle editable text mode on/off.</div></div>
+<a class="link" href="javascript:(function(){var d=document;if(d.designMode==='on'){d.designMode='off';d.body.contentEditable='false';alert('Editing disabled');}else{d.designMode='on';d.body.contentEditable='true';alert('Editing enabled! Click text to edit. Reload to undo.');}})();">🔖 Drag: Edit text</a>
 </div>
 
-<!-- Developer Console -->
+<!-- 2. Dev Console -->
 <div class="card">
-  <div style="flex:1">
-    <strong>Developer Console (in-page)</strong>
-    <div class="instructions">
-      Opens a small console overlay you can use to run JavaScript on the page.
-    </div>
-  </div>
-  <a class="link"
-     href="javascript:(function(){try{if(window.__miniConsole&&window.__miniConsole.open){window.__miniConsole.toggle();return;}var c=document.createElement('div');c.id='__miniConsole';c.style='position:fixed;right:18px;bottom:18px;width:420px;max-width:calc(100% - 36px);height:260px;background:rgba(17,24,39,0.98);color:white;border-radius:10px;box-shadow:0 12px 30px rgba(2,6,23,0.6);z-index:999999999;display:flex;flex-direction:column;font-family:ui-monospace,Menlo,monospace;font-size:13px;';var top=document.createElement('div');top.style='padding:8px 10px;display:flex;justify-content:space-between;align-items:center;';var title=document.createElement('div');title.textContent='Mini Console';title.style='font-weight:700;opacity:0.95;';var btns=document.createElement('div');btns.style='display:flex;gap:6px;';var close=document.createElement('button');close.textContent='✕';close.style='cursor:pointer;background:none;border:0;color:white;font-size:14px;';var clear=document.createElement('button');clear.textContent='Clear';clear.style='cursor:pointer;background:none;border:0;color:white;font-size:13px;';btns.append(clear,close);top.append(title,btns);var out=document.createElement('pre');out.style='flex:1;margin:0;padding:10px;overflow:auto;white-space:pre-wrap;line-height:1.4;';out.textContent='Console ready. Type JS below and press Enter.\\n';var input=document.createElement('input');input.type='text';input.placeholder='Type JS and press Enter →';input.style='width:100%;padding:8px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;background:rgba(255,255,255,0.05);color:white;';var inputWrap=document.createElement('div');inputWrap.style='padding:8px;';inputWrap.append(input);c.append(top,out,inputWrap);document.body.append(c);function log(v){out.textContent+=String(v)+'\\n';out.scrollTop=out.scrollHeight;}close.onclick=()=>c.remove();clear.onclick=()=>out.textContent='Console cleared.\\n';input.addEventListener('keydown',e=>{if(e.key==='Enter'){var code=input.value;input.value='';try{var result=eval(code);log('> '+code);log(result);}catch(err){log('Error: '+err);}}});window.__miniConsole={open:true,toggle:()=>{c.style.display=(c.style.display==='none'?'flex':'none');}};}catch(e){alert('Mini console error: '+e);} })();">
-     🔖 Drag: Developer console
-  </a>
+<div style="flex:1"><strong>Developer Console (in-page)</strong><div class="instructions">A small overlay for running JS commands.</div></div>
+<a class="link" href="javascript:(function(){try{if(window.__miniConsole&&window.__miniConsole.open){window.__miniConsole.toggle();return;}var c=document.createElement('div');c.id='__miniConsole';c.style='position:fixed;right:18px;bottom:18px;width:420px;max-width:calc(100% - 36px);height:260px;background:rgba(17,24,39,0.98);color:white;border-radius:10px;box-shadow:0 12px 30px rgba(2,6,23,0.6);z-index:999999999;display:flex;flex-direction:column;font-family:ui-monospace,Menlo,monospace;font-size:13px;';var top=document.createElement('div');top.style='padding:8px 10px;display:flex;justify-content:space-between;align-items:center;';var title=document.createElement('div');title.textContent='Mini Console';title.style='font-weight:700;opacity:0.95;';var btns=document.createElement('div');btns.style='display:flex;gap:6px;';var close=document.createElement('button');close.textContent='✕';close.style='cursor:pointer;background:none;border:0;color:white;font-size:14px;';var clear=document.createElement('button');clear.textContent='Clear';clear.style='cursor:pointer;background:none;border:0;color:white;font-size:13px;';btns.append(clear,close);top.append(title,btns);var out=document.createElement('pre');out.style='flex:1;margin:0;padding:10px;overflow:auto;white-space:pre-wrap;line-height:1.4;';out.textContent='Console ready. Type JS below and press Enter.\\n';var input=document.createElement('input');input.type='text';input.placeholder='Type JS and press Enter →';input.style='width:100%;padding:8px;border:1px solid rgba(255,255,255,0.2);border-radius:6px;background:rgba(255,255,255,0.05);color:white;';var inputWrap=document.createElement('div');inputWrap.style='padding:8px;';inputWrap.append(input);c.append(top,out,inputWrap);document.body.append(c);function log(v){out.textContent+=String(v)+'\\n';out.scrollTop=out.scrollHeight;}close.onclick=()=>c.remove();clear.onclick=()=>out.textContent='Console cleared.\\n';input.addEventListener('keydown',e=>{if(e.key==='Enter'){var code=input.value;input.value='';try{var result=eval(code);log('> '+code);log(result);}catch(err){log('Error: '+err);}}});window.__miniConsole={open:true,toggle:()=>{c.style.display=(c.style.display==='none'?'flex':'none');}};}catch(e){alert('Mini console error: '+e);} })();">🔖 Drag: Developer console</a>
 </div>
 
-<p class="instructions">
-💡 If your browser won’t let you drag the link, right-click → “Bookmark this link” instead.
-</p>
+<!-- 3. Games Hub (Expanded) -->
+<div class="card">
+<div style="flex:1"><strong>Games Hub</strong><div class="instructions">Play Snake, Tic-Tac-Toe, Pong, Breakout, and Cookie Clicker!</div></div>
+<a class="link" href="javascript:(function(){if(window.__gamesHub){document.body.removeChild(__gamesHub);__gamesHub=null;return;}var d=document.createElement('div');d.id='__gamesHub';d.style='position:fixed;inset:0;z-index:999999999;background:rgba(0,0,0,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;font-family:sans-serif;text-align:center;';d.innerHTML='<h2 style=&quot;margin-bottom:10px;&quot;>🎮 Games Hub</h2><div id=&quot;buttons&quot;></div><canvas id=&quot;gameCanvas&quot; width=&quot;400&quot; height=&quot;400&quot; style=&quot;display:none;background:#111;border:2px solid #444;&quot;></canvas><button id=&quot;close&quot; style=&quot;margin-top:10px;padding:8px 12px;border-radius:6px;border:0;background:#ef4444;color:white;&quot;>Close</button>';document.body.appendChild(d);var buttons=d.querySelector('#buttons');['Snake','TicTacToe','Pong','Breakout','CookieClicker'].forEach(n=>{var b=document.createElement('button');b.textContent=n;b.style='margin:4px;padding:10px;border-radius:6px;border:0;background:#2563eb;color:white;font-weight:600;';b.onclick=()=>startGame(n);buttons.append(b);});d.querySelector('#close').onclick=()=>{document.body.removeChild(d);__gamesHub=null;};var c=d.querySelector('#gameCanvas'),ctx=c.getContext('2d');function startGame(name){c.style.display='block';ctx.clearRect(0,0,400,400);if(name==='Snake'){let box=20,snake=[{x:9*box,y:9*box}],dir='RIGHT',food={x:5*box,y:5*box};document.onkeydown=e=>{if(e.key.startsWith('Arrow'))dir=e.key.replace('Arrow','').toUpperCase();};function draw(){ctx.fillStyle='#000';ctx.fillRect(0,0,400,400);for(let s of snake){ctx.fillStyle='#0f0';ctx.fillRect(s.x,s.y,box,box);}ctx.fillStyle='red';ctx.fillRect(food.x,food.y,box,box);let head={x:snake[0].x,y:snake[0].y};if(dir==='LEFT')head.x-=box;if(dir==='UP')head.y-=box;if(dir==='RIGHT')head.x+=box;if(dir==='DOWN')head.y+=box;snake.unshift(head);if(head.x==food.x&&head.y==food.y){food={x:Math.floor(Math.random()*19)*box,y:Math.floor(Math.random()*19)*box};}else snake.pop();if(head.x<0||head.x>=400||head.y<0||head.y>=400||snake.slice(1).some(s=>s.x==head.x&&s.y==head.y)){alert('Game Over');clearInterval(game);}}var game=setInterval(draw,100);}if(name==='TicTacToe'){let b=Array(9).fill(null),p='X';function draw(){ctx.fillStyle='#111';ctx.fillRect(0,0,400,400);ctx.strokeStyle='#fff';for(let i=1;i<3;i++){ctx.beginPath();ctx.moveTo(i*133,0);ctx.lineTo(i*133,400);ctx.moveTo(0,i*133);ctx.lineTo(400,i*133);ctx.stroke();}ctx.font='100px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';for(let i=0;i<9;i++){if(b[i])ctx.fillText(b[i],(i%3)*133+67,Math.floor(i/3)*133+67);}}draw();c.onclick=e=>{let x=Math.floor(e.offsetX/133),y=Math.floor(e.offsetY/133),i=y*3+x;if(!b[i]){b[i]=p;p=p==='X'?'O':'X';draw();}};}if(name==='Pong'){let ball={x:200,y:200,dx:3,dy:3},paddle={x:180,y:380,w:80,h:10},score=0;document.onmousemove=e=>paddle.x=e.clientX-200;function draw(){ctx.fillStyle='black';ctx.fillRect(0,0,400,400);ctx.fillStyle='white';ctx.fillRect(paddle.x,paddle.y,paddle.w,paddle.h);ctx.beginPath();ctx.arc(ball.x,ball.y,8,0,Math.PI*2);ctx.fill();ctx.fillText('Score:'+score,10,20);ball.x+=ball.dx;ball.y+=ball.dy;if(ball.x<0||ball.x>400)ball.dx*=-1;if(ball.y<0)ball.dy*=-1;if(ball.y>paddle.y-8&&ball.x>paddle.x&&ball.x<paddle.x+paddle.w){ball.dy*=-1;score++;}if(ball.y>400){alert('Game Over! Score '+score);clearInterval(g);} }var g=setInterval(draw,16);}if(name==='Breakout'){let rows=4,cols=6,bricks=[],score=0;for(let r=0;r<rows;r++)for(let c_=0;c_<cols;c_++)bricks.push({x:65*c_+30,y:25*r+30,w:60,h:20,hit:false});let paddle={x:160,y:370,w:80,h:10},ball={x:200,y:200,dx:3,dy:3};document.onmousemove=e=>paddle.x=e.clientX-200;function draw(){ctx.fillStyle='black';ctx.fillRect(0,0,400,400);ctx.fillStyle='red';for(let b of bricks){if(!b.hit)ctx.fillRect(b.x,b.y,b.w,b.h);}ctx.fillStyle='white';ctx.fillRect(paddle.x,paddle.y,paddle.w,paddle.h);ctx.beginPath();ctx.arc(ball.x,ball.y,6,0,Math.PI*2);ctx.fill();ball.x+=ball.dx;ball.y+=ball.dy;if(ball.x<0||ball.x>400)ball.dx*=-1;if(ball.y<0)ball.dy*=-1;if(ball.y>paddle.y-6&&ball.x>paddle.x&&ball.x<paddle.x+paddle.w)ball.dy*=-1;for(let b of bricks){if(!b.hit&&ball.x>b.x&&ball.x<b.x+b.w&&ball.y>b.y&&ball.y<b.y+b.h){b.hit=true;ball.dy*=-1;score++;}}ctx.fillText('Score:'+score,10,20);if(ball.y>400){alert('Game Over! Score '+score);clearInterval(g);}if(score===rows*cols){alert('You win!');clearInterval(g);} }var g=setInterval(draw,16);}if(name==='CookieClicker'){let cookies=0;function draw(){ctx.fillStyle='#222';ctx.fillRect(0,0,400,400);ctx.fillStyle='orange';ctx.beginPath();ctx.arc(200,200,80,0,Math.PI*2);ctx.fill();ctx.fillStyle='white';ctx.font='24px sans-serif';ctx.fillText('Cookies: '+cookies,130,50);}draw();c.onclick=function(e){let dx=e.offsetX-200,dy=e.offsetY-200;if(dx*dx+dy*dy<80*80){cookies++;draw();}};}}window.__gamesHub=d;})();">🔖 Drag: Games hub</a>
+</div>
+
+<!-- 4. Mini Browser -->
+<div class="card">
+<div style="flex:1"><strong>Mini Browser</strong><div class="instructions">Opens an overlay to load a URL in an iframe (if allowed).</div></div>
+<a class="link" href="javascript:(function(){if(window.__miniBrowser){document.body.removeChild(__miniBrowser);__miniBrowser=null;return;}var d=document.createElement('div');d.id='__miniBrowser';d.style='position:fixed;inset:0;z-index:999999999;background:rgba(0,0,0,.85);display:flex;flex-direction:column;align-items:center;';d.innerHTML='<div style=&quot;margin:10px;font-weight:700;font-size:18px;color:white;&quot;>🌐 Mini Browser</div><input id=&quot;url&quot; placeholder=&quot;Enter URL (https://...)&quot; style=&quot;width:80%;padding:8px;border-radius:6px;border:0;margin-bottom:10px;&quot;><button id=&quot;go&quot; style=&quot;padding:8px 14px;border-radius:6px;border:0;background:#0b5cff;color:white;font-weight:600;&quot;>Go</button><button id=&quot;close&quot; style=&quot;padding:8px 14px;border-radius:6px;border:0;background:#ef4444;color:white;font-weight:600;margin-top:8px;&quot;>Close</button><iframe id=&quot;frame&quot; style=&quot;width:90%;flex:1;border:2px solid #333;border-radius:8px;margin:10px;background:white;&quot;></iframe>';document.body.appendChild(d);var i=d.querySelector('#frame');d.querySelector('#close').onclick=function(){document.body.removeChild(d);__miniBrowser=null;};d.querySelector('#go').onclick=function(){var u=d.querySelector('#url').value.trim();if(!/^https?:\\/\\//.test(u))u='https://'+u;i.src=u;};window.__miniBrowser=d;})();">🔖 Drag: Mini browser</a>
+</div>
+
+<p class="instructions">💡 If your browser blocks dragging of <code>javascript:</code> links, right-click → “Bookmark this link”.</p>
 
 </body>
 </html>
+
 
